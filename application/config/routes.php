@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route[''] = 'C_Login/first';
+
 $route['login'] = 'C_Login';
 $route['verifylogin'] = 'C_Login/check_database';
 $route['loggedin'] = 'C_Login/sudah_login';
@@ -20,6 +22,7 @@ $route['profil'] = 'C_profil/profil';
 $route['surat-keputusan/(:any)'] = 'C_SuratKegiatan_Pegawai/index/$1';
 $route['permohonan-cuti'] = 'C_CutiPegawai';
 $route['cetak-surat-cuti/(:any)'] = 'C_CutiPegawai/cetak_surat/$1';
+$route['kirim-email'] = 'C_CutiPegawai/sendMail';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

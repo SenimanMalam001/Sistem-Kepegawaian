@@ -8,6 +8,10 @@ class C_Login extends CI_Controller {
      $this->load->model('M_Login', 'Model');
   }
 
+  function first(){
+    redirect('login', 'refresh');
+  }
+
   function index()
   {
     if($this->session->userdata("username")){

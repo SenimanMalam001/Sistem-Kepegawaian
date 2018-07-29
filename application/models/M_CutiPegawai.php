@@ -77,4 +77,26 @@ class m_cutipegawai extends CI_Model{
 		$this->db->where('id', $id);
 		return $this->db->update('tbl_permohonan_cuti', $data);
 	}
+
+	function viewDataCuti($id)
+	{
+
+		$this->db->where('id', $id);
+		$data = $this->db->get('v_cetaksuratizin');
+		return $data->row();
+	}
+
+	function dataPegawai($NIP)
+	{
+		$this->db->where('NIP', $NIP);
+		$data = $this->db->get('vw_profil_biodata');
+		return $data->row();
+	}
+
+	function dataPimpinanFakultas($kd_fakultas)
+	{
+		$this->db->where('kd_fakultas', $kd_fakultas);
+		$data = $this->db->get('vw_pimpinan_fakultas');
+		return $data->row();
+	}
 }

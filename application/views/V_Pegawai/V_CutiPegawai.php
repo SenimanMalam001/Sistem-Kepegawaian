@@ -304,6 +304,31 @@
         </div>
         <!-- /#page-wrapper -->
 
+        <!--MODAL SEND-->
+        <form action="<?php echo base_url('kirim-email')?>" method="POST">
+        <div class="modal fade" id="Modal_Send" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Data Cuti</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <strong>Are you sure to send this record?</strong>
+
+                </div>
+                <div class="modal-footer">
+                <input type="hidden" name="id_cuti" id="id_cuti" class="form-control">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="submit" id="btn_send" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
 <!-- END OF CONTENT -->
 
 
@@ -395,14 +420,15 @@
                                         '</td>'+
                                         '<td style="text-align:right;">'+
                                             '<a href="javascript:void(0);" id="item_edit" class="btn btn-info btn-sm item_edit fa fa-pencil  '+$stat+'" data-id_cuti="'+data[i].id+
-                                                                                        '" data-tgl_mulai_cuti="'+data[i].tgl_mulai+
-                                                                                        '" data-tgl_akhir_cuti="'+data[i].tgl_akhir+
-                                                                                        '" data-alasan_cuti="'+data[i].alasan+
-                                                                                        '" data-nip_dosen_cuti="'+data[i].nip_dosen+
-                                                                                        '" data-kd_jenis_cuti="'+data[i].kd_jenis+ 
-                                                                                        '"></a>'+''+
-                                            '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete fa fa-trash-o '+$stat+'" data-id_cuti="'+data[i].id+'"></a>'+' <hr '+$stat+'>'+
-                                            '<a href="javascript:void(0);" class="btn btn-warning btn-sm item_upload glyphicon glyphicon-open '+$stat2+'" data-id_cuti="'+data[i].id+'" data-kd_jenis_cuti="'+data[i].kd_jenis+'"></a>'+
+                                                '" data-tgl_mulai_cuti="'+data[i].tgl_mulai+
+                                                '" data-tgl_akhir_cuti="'+data[i].tgl_akhir+
+                                                '" data-alasan_cuti="'+data[i].alasan+
+                                                '" data-nip_dosen_cuti="'+data[i].nip_dosen+
+                                                '" data-kd_jenis_cuti="'+data[i].kd_jenis+ 
+                                                '"></a>'+' '+
+                                            '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete fa fa-trash-o '+$stat+'" data-id_cuti="'+data[i].id+'"></a>'+' <hr '+$stat+'>'+' '+
+                                            '<a href="javascript:void(0);" class="btn btn-warning btn-sm item_upload glyphicon glyphicon-open" data-id_cuti="'+data[i].id+'" data-kd_jenis_cuti="'+data[i].kd_jenis+'"></a>'+' '+
+                                            '<a href="javascript:void(0);" class="btn btn-primary btn-sm item_send glyphicon glyphicon-send '+$stat+'" data-id_cuti="'+data[i].id+'"></a>'+
                                         '</td>'+
                                         '</tr>';
                             }
@@ -516,28 +542,19 @@
 
                         
                      });
+                });
 
+                
+                //show modal send
+                $('#show_data').on('click','.item_send',function(){
+                    var id_cuti = $(this).data('id_cuti');
 
-                     // $('#btn_upload_link').on('click',function(){
-                     //    var id_cuti = $('#id_cuti_link').val();
-                     //    var upload_link = $('#id_upload_link').val();
+                    $('#Modal_Send').modal('show');
+                    $('[name=id_cuti]').val(id_cuti);
+                });
 
-                     //    $.ajax({
-                     //        type : "POST",
-                     //        url  : "<?php echo site_url('C_CutiPegawai/upload_link')?>",
-                     //        dataType : "JSON",
-                     //        data : {id_cuti:id_cuti, upload_link:upload_link},
-                     //        success: function(data){
-                     //            $('[name="id_upload_link"]').val("");
-                     //            // $('#Modal_upload').modal('hide');
-                     //            show_product();
-                     //        }
-                     //    });
-                     //    return false;
-                     // });
-
-                     
-
+                $('#btn_send').on('click',function(){
+                    $('#Modal_Send').modal('hide');
                 });
 
             

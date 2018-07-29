@@ -21,6 +21,7 @@ class M_profil extends CI_Model{
 	
 	function get_golongan(){
 		$NIP = $this->session->userdata("id");
+		
 		$this->db->where('nip', $NIP);
 		$hasil = $this->db->get('vw_history_golongan');
 		return $hasil->result();
@@ -75,7 +76,7 @@ class M_profil extends CI_Model{
   
   	// Fungis untuk library Notif
 	function cek_kelengkapan_data(){
-		$NIP = '15312371';
+		$NIP = $this->session->userdata("id");
 		$this->db->where('NIP', $NIP);
 		$hasil=$this->db->get("vw_profil_biodata");
 		return $hasil->row();

@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_profil extends CI_Controller {
+
 	function __construct() 
 	{
       	parent::__construct();
@@ -13,6 +14,7 @@ class C_profil extends CI_Controller {
 		$data['pegawai'] = $this->m_profil->show_profil();
 		$this->load->view('V_Pegawai/profil/V_profil.php', $data);
 	}
+
 	function simpan_edit(){
 		$NIP 				= $this->session->userdata("id");
 		$nama_pegawai 		= $this->input->post('nama_pegawai');
@@ -59,7 +61,6 @@ class C_profil extends CI_Controller {
 
 		
     	redirect('C_Profil/profil');
-
 	}
 
 	function save(){

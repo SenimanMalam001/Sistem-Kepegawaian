@@ -1,5 +1,5 @@
 
-var base_url = 'http://localhost/Sistem_Pegawai/';
+var base_url = 'http://localhost/Sistem-Kepegawaian/';
 var nip = $('#nip').val();
 
 $(document).ready(function(){
