@@ -50,6 +50,7 @@ $(document).ready(function(){
                   '" data-keterangan="'+data[i].deskripsi_sk+
                   '" data-tgl_awal="'+data[i].tgl_awal+
                   '" data-tgl_akhir="'+data[i].tgl_akhir+
+                  
                   '" data-sk_fileurl="'+ data[i].sk_fileurl +'"><i class="fa fa-pencil" aria-hidden="true"></i></a>'+' '+
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm" id="show_anggota_sk" data-id="'+data[i].id+'"><i class="fa fa-users" aria-hidden="true"></i></a><hr style="margin:2px 0px;">' +' ' +
                   '<a href="javascript:void(0);" class="btn btn-success btn-sm" id="show_modal_upload" data-id="'+data[i].id+'"><i class="fa fa-upload" aria-hidden="true"></i></a>' +' ' +

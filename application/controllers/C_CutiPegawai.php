@@ -120,6 +120,7 @@ class c_cutipegawai extends CI_Controller{
 		$namaPengirim = $dataPegawai->nama_pegawai;
 		$dataCutiPegawai['data'] = $this->m_cutipegawai->viewDataCuti($id);
 
+
 		$this->load->library('email', $config);  
 		$this->email->set_newline("\r\n");  
 		$this->email->from($emailPengirim, $namaPengirim);   

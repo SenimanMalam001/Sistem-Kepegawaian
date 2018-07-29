@@ -39,7 +39,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-envelope" aria-hidden="true"></i> Surat Keputusan</h3>
+                <h3 class="page-header"><i class="fa fa-suitcase" aria-hidden="true"></i> Surat Tugas</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -59,7 +59,7 @@
                   </thead>
                   <tbody id="show_data">
                   <?php $i = 1; ?>
-                    <?php foreach($suratkegiatan as $sk) { ?>
+                    <?php foreach($surattugas as $sk) { ?>
                         <tr>
                           <td><?php echo $i ?></td>
                           <td><?php echo $sk->deskripsi_rubrik; ?></td>

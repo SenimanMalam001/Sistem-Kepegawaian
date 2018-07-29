@@ -46,7 +46,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                <h2 class="page-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Permutasi Pegawai dan dosen</h2>
+                <h3 class="page-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Permutasi Pegawai dan dosen</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

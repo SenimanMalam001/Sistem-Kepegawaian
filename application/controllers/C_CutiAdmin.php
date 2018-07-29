@@ -45,4 +45,15 @@ class c_cutiadmin extends CI_Controller{
 		$data=$this->m_cutiadmin->update_disagree();
 		echo json_encode($data);
 	}
+
+	function agreeByEmail($id){
+		$data=$this->m_cutiadmin->agreeByEmail($id);
+		$this->load->view('V_Pegawai/V_email_accept.php');
+
+	}
+
+	function disagreeByEmail($id){
+		$data=$this->m_cutiadmin->disagreeByEmail($id);
+		$this->load->view('V_Pegawai/V_email_accept.php');
+	}
 }

@@ -7,6 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        <img style="height:45px; padding:5px; margin-left:10px; float:left;" src="<?php echo base_url() . 'assets/images/uin_logo.png' ?>">
         <a class="navbar-brand" href="index.html">Sistem Informasi Kepegawaian</a>
     </div>
     <!-- /.navbar-header -->
@@ -201,7 +202,7 @@
                     <a href="<?php echo base_url(). 'surat-keputusan/' . $this->session->userdata("id"); ?>"><i class="fa fa-envelope" aria-hidden="true"></i> Surat Keputusan</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url(). 'surat-tugas' ?>"><i class="fa fa-suitcase" aria-hidden="true"></i> Surat Tugas</a>
+                    <a href="<?php echo base_url(). 'surat-tugas/' . $this->session->userdata("id"); ?>"><i class="fa fa-suitcase" aria-hidden="true"></i> Surat Tugas</a>
                 </li>
                 <li>
                     <a href="<?php echo base_url(). 'permohonan-cuti' ?>"><i class="fa fa-reply" aria-hidden="true"></i> Pengajuan Cuti dan izin sakit</a>

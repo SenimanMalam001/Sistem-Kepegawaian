@@ -73,4 +73,24 @@ class m_cutiadmin extends CI_Model{
 		$this->db->where('id', $this->input->post('id_cuti'));
 		return $this->db->update('tbl_permohonan_cuti', $data);
 	}
+
+	function agreeByEmail($id){
+		$data = array(
+			'id_status' => '2',
+			'pesan' => 'Permohonan cuti telah divalidasi oleh pimpinan'
+		);
+
+		$this->db->where('id', $id);
+		return $this->db->update('tbl_permohonan_cuti', $data);
+	}
+
+	function disagreeByEmail($id){
+		$data = array(
+			'id_status' => '3',
+			'pesan' => 'Permohonan Cuti andi ditolak, Silahkan Periksa kembali berkas pengajuan cuti anda dan ajukan ulang permohonan cuti anda'
+		);
+
+		$this->db->where('id', $id);
+		return $this->db->update('tbl_permohonan_cuti', $data);
+	}
 }

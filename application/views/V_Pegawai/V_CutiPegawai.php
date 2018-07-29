@@ -340,7 +340,7 @@
     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.dataTables.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/dataTables.bootstrap.min.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/datepicker.js')?>"></script>
-    
+    <script src="<?php echo base_url() . 'assets/js/notification.js' ?>"></script>
     
 
     <!-- Metis Menu Plugin JavaScript -->
