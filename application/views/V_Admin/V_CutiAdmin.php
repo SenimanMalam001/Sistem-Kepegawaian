@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Admin - Cuti</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css') ?>" rel="stylesheet">
@@ -54,7 +54,7 @@
                             </h1> -->
                         </div>
 
-                        <table class="table table-striped" id="mydata">
+                        <table class="table table-striped table-bordered" id="mydata">
                             <thead>
                                 <tr>
                                     <th>Nip</th>

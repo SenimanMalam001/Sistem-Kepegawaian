@@ -49,13 +49,13 @@
   <div id="page-wrapper">
     <div class="row">
     	<div class="col-lg-12">
-      <h2 class="page-header"><i class="fa fa-envelope" aria-hidden="true"></i> Surat Keputusan</h2>
+      <h3 class="page-header"><i class="fa fa-envelope" aria-hidden="true"></i> Surat Keputusan</h3>
         <a href="javascript:void(0);" style="margin-bottom:20px;" id="show_modal_add" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a>
     	</div>
     </div>
     <div class="row">
   		<div class="col-lg-12">
-  			<table class="table table-hover" id="mydata">
+  			<table class="table table-striped table-bordered" id="mydata">
 					<thead>
 							<tr>
 									<th>#</th>

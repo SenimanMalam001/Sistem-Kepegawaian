@@ -27,7 +27,7 @@ class C_profil extends CI_Controller {
 		$tempat_lahir 		= $this->input->post('tempat_lahir');
 		$agama 				= $this->input->post('agama');
 		$status_aktif 		= $this->input->post('status_aktif');
-		$gambar				= $file['file_name'];
+		
 
         $config['upload_path'] = './images/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -46,7 +46,7 @@ class C_profil extends CI_Controller {
 	    		'no_ktp' => $no_ktp,
 	    		'no_telepon' => $no_telepon,
 	    		'no_telepon_rumah' => $no_telepon_rumah,
-	    		'alamat' => $alamat,
+	    		'alamat_tinggal' => $alamat,
 	    		'jenis_kelamin' => $jenis_kelamin,
 	    		'tanggal_lahir' => $tanggal_lahir,
 	    		'tempat_lahir' => $tempat_lahir,

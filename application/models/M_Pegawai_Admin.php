@@ -3,6 +3,14 @@ class M_Pegawai_Admin extends CI_Model{
 
   function get_all_data(){
     $db = $this->load->database('default', TRUE);
+    $db->where('status_kepegawaian', '0');
+    $data = $db->get('vw_profil_biodata');
+    return $data->result();
+  }
+
+  function get_all_data_dosen(){
+    $db = $this->load->database('default', TRUE);
+    $db->where('status_kepegawaian', '1');
     $data = $db->get('vw_profil_biodata');
     return $data->result();
   }

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Admin - Kepegawaian</title>
     <link rel="icon" type="image/png" href="<?php echo base_url() .'assets/images/uin_logo.png'?> "/>
 
     <!-- Bootstrap Core CSS -->
@@ -249,7 +249,7 @@
                      
                                 <div class="row">
                                   <div class="col-md-12" style="padding-left: 50px;">
-                                    <h2 class="page-header" style="text-align: center;"><i class="fa fa-user aria-hidden="true"> Golongan</i></h2>
+                                    <h2 class="page-header" style="text-align: center;"><i class="fa fa-user" aria-hidden="true"> Golongan</i></h2>
                                     <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" id="tambah" data-target="#Modal_Add_Golongan"><span class="fa fa-plus"></span> Tambah</a>
                                     </div>
                                     <table class="table table-hover">
@@ -320,7 +320,13 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url('assets/js/sb-admin-2.js') ?>"></script>
 
-    <script type="text/javascript" src="<?php echo base_url('assets/js/datepicker.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/bootstrap/bootstrap.min.js')?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.dataTables.js')?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url('assets/js/datepicker.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/bootstrap/dataTables.bootstrap.min.js')?>"></script>
+   
 
     <script type="text/javascript">
         $(document).ready(function(){

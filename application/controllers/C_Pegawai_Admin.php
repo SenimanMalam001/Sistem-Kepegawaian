@@ -12,6 +12,7 @@ class C_Pegawai_Admin extends CI_Controller {
       redirect('login', 'refresh');
     }
     $data['pegawai'] = $this->Model->get_all_data();
+    $data['dosen'] = $this->Model->get_all_data_dosen();
 
     $this->load->view('V_Admin/V_Pegawai_Admin/V_Pegawai_Admin', $data);
 

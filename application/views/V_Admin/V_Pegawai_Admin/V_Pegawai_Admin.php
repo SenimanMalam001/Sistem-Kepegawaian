@@ -44,8 +44,8 @@
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                  <h2 class="page-header"><i class="fa fa-user" aria-hidden="true"> Profil</i></h2>
+                <div class="col-lg-9">
+                  <h3 class="page-header"><i class="fa fa-user" aria-hidden="true"> Profil</i></h3>
                     <!-- <a href="javascript:void(0);" style="margin-bottom:20px;" id="show_modal_add" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a> -->
                 </div>
                 <!-- /.col-lg-12 -->
@@ -115,7 +115,7 @@
                       </tr>
                     </thead>
                     <tbody id="show_data_dosen">
-                      <?php foreach($pegawai as $p) { ?>
+                      <?php foreach($dosen as $p) { ?>
                           <tr>
                             <td><?php echo $p->NIP; ?></td>
                             <td><?php echo $p->nama_pegawai; ?></td>

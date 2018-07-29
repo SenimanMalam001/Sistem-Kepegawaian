@@ -55,7 +55,7 @@
     </div>
     <div class="row">
   		<div class="col-lg-12">
-  			<table class="table table-hover" id="mydata">
+  			<table class="table table-striped table-bordered" id="mydata">
 					<thead>
 							<tr>
                 <th>#</th>

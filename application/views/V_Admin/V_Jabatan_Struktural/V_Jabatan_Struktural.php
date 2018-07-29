@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Admin - Jabatan Struktural</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css') ?>" rel="stylesheet">
@@ -44,7 +44,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                <h2 class="page-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Pengajuan surat cuti dan izin sakit</h2>
+                <h3 class="page-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Jabatan Struktural</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -58,7 +58,7 @@
 
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                  <h3>Pegawai</h3>
+                <br>
                   <table class="table table-striped table-bordered" id="tableJabatanDosen">
                     <thead>
                       <tr>
@@ -84,7 +84,7 @@
                   </table>
                 </div>
                 <div id="menu1" class="tab-pane fade">
-                  <h3>Dosen</h3>
+                <br>
                   <table class="table table-striped table-bordered" id="tableJabatanPegawai">
                   <thead>
                     <tr>
@@ -400,10 +400,14 @@ $('#btn_update_jabatan_pegawai').on('click', function(){
     success : function(data){
       console.log('Berhasil Update Data pegawai Baru');
       $('#Modal_Edit_Jabatan_pegawai').modal('hide');
+
+      
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert(textStatus);
     }
+
+    
   });
 
 });

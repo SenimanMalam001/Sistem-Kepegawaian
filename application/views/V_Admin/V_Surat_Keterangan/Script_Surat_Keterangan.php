@@ -24,10 +24,10 @@ $(document).ready(function(){
       dataType : 'json',
       success : function(data){
         var html = '';
-        var $berkas = '<p class="text-danger"> Anda belum upload SK </p>';
-        
 
         for(var i=0; i<data.length; i++){
+
+          var $berkas = '<p class="text-danger"> Anda belum upload SK </p>';
 
           // Jika File terdeteksi
           if(data[i].sk_fileurl){

@@ -59,37 +59,47 @@
 
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                  <table class="table table-striped table-bordered" id="mydata">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>Nama Pegawai</th>
-                          <th>Fakultas</th>
-                          <th>Sejak</th>
-                          <th>Aksi</th>
-                      </tr>
-                  </thead>
-                  <tbody id="show_data_pegawai">
-                    
-                  </tbody>
-                </table>
+                <br>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <table class="table table-striped table-bordered" id="mydata">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Pegawai</th>
+                                <th>Fakultas</th>
+                                <th>Sejak</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="show_data_pegawai">
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
 
                 <div id="menu1" class="tab-pane fade">
-                  <table class="table table-striped table-bordered" id="mydata">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>Nama Dosen</th>
-                          <th>Fakultas</th>
-                          <th>Sejak</th>
-                          <th>Aksi</th>
-                      </tr>
-                  </thead>
-                  <tbody id="show_data_dosen">
+                <br>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <table class="table table-striped table-bordered" id="mydata2">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Dosen</th>
+                                <th>Fakultas</th>
+                                <th>Sejak</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="show_data_dosen">
 
-                  </tbody>
-                </table>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -126,7 +136,8 @@ $(document).ready(function(){
   show_data_pegawai();
   show_data_dosen();
   // Catatan apakah ini adalah cara yang baik dalam performance ?
-  //
+  $('#mydata').DataTable();
+  $('#mydata2').DataTable();
 
 });
 
