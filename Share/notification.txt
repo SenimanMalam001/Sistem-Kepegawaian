@@ -1,0 +1,8 @@
+# Admin Notification
+jika ada pengajuan Cuti
+jika ada apa lah
+
+# Pegawai / Dosen
+Jika data diri belum lengkap
+Jika Permohonan Cuti Di terima atau di tolak
+Keluarnya Surat Tugas dan Surat Keputusan Baru yang menyangkut individu

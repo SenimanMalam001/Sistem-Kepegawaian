@@ -1,0 +1,12 @@
+WORK WORK WORK !!!
+17 : 	FINISH SK Admin (update anggota dan upload)
+		FINISH AUTH SYSTEM (ambil dari punya pa wawan)
+		READ ABOUT THE URL ENCRYPTION
+
+18 : Define url parttern for the sistem setelah makan siang, Mutasi Pegawai setelah sholat asar, Form_Admin_Profil, Form_Jabatan_Struktural, Form_Surat_Tugas
+
+19: Remake database strukture for dosen (Mengimplementasi kan sistem login ke dalam program), menyatukan semua project;
+
+FUTURE :
+- Creating Database for recording all histroy transaction
+- Dokumentasi (Riski)
