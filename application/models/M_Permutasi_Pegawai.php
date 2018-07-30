@@ -20,11 +20,8 @@ class M_Permutasi_Pegawai extends CI_Model {
         return $result->result();
     }
 
-    function update_fakultas_pegawai(){
+    function update_fakultas_pegawai($nip, $kd_fakultas){
         $db = $this->load->database('default', TRUE);
-
-		$nip=$this->input->post('nip_pegawai');
-		$kd_fakultas=$this->input->post('kd_fakultas_baru');
 
         $db->set('kd_fakultas', $kd_fakultas);
         $db->set('sejak_tanggal', date('Y-m-d'));

@@ -214,49 +214,6 @@ $('#show_data_pegawai').on('click', '#show_modal_edit', function(){
   $('#Modal_Edit_Fakultas_Pegawai').modal('show');
 });
 
-$('#btn_update_fakultas_pegawai').on('click', function(){
-
-  var nip_pegawai = $('#nip_pegawai').val();
-  var nama_pegawai = $('#nama_pegawai').val();
-  var kd_fakultas = $('#kd_fakultas').val();
-  var fakultas_pegawai = $('#fakultas_pegawai').val();
-  var kd_fakultas_baru = $('#select_fakultas_pegawai').val();
-  var nama_fakultas_baru = $('#select_fakultas_pegawai option:selected').text();
-
-  if(kd_fakultas == kd_fakultas_baru){
-
-    // Check jika fakultas baru adalah fakultas yang sekarang jika iaaa tampilkan notif
-    alert(nama_pegawai + ' Sudah Berada di fakultas ' + fakultas_pegawai);
-
-  }else{
-
-    // Jika bukan simpan fakultas baru maka update fakultas pegawai
-    $.ajax({
-      type  : 'POST',
-      url   : '<?php echo base_url() . 'C_Permutasi_Pegawai/updateFakultasPegawai' ?>',
-      async : false,
-      data : {nip_pegawai: nip_pegawai, kd_fakultas_baru : kd_fakultas_baru},
-      dataType : 'json',
-      success : function(data){
-
-        // Munculkan Notifikasi Bahwa permutasi pegawai berhasil
-        alert(nama_pegawai + ' Berpindah Fakultas Menjadi ' + nama_fakultas_baru);
-        $('#Modal_Edit_Fakultas_Pegawai').modal('hide');
-
-        // Refresh Data Pegawai
-        show_data_pegawai();
-        show_data_dosen();
-
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        alert(textStatus);
-      }
-    });
-
-  }
-
-});
-
     // ============================== DATA DOSEN ==================================
 function show_data_dosen(){
 

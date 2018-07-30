@@ -64,7 +64,7 @@
 									<th>Tanggal Awal</th>
 									<th>Tanggal Akhir</th>
                   <th>Berkas</th>
-									<th style="text-align: right;">Actions</th>
+									<th style="text-align: right;">Aksi</th>
 							</tr>
 					</thead>
 					<tbody id="show_data">

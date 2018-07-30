@@ -68,14 +68,16 @@
                         <th>Aksi</th>
                       </tr>
                     </thead>
-                    <tbody id="show_data_dosen">
-                      <?php foreach($jabtan_dosen as $jabatan) { ?>
+                    <tbody id="show_data_pegawai">
+
+
+                      <?php foreach($jabtan_pegawai as $jabatan) { ?>
                         <tr>
                           <td><?php echo $jabatan->nama_pegawai; ?></td>
                           <td><?php echo $jabatan->nama_jabatan; ?></td>
                           <td><?php echo $jabatan->sejak_tanggal; ?></td>
                           <td>
-                            <a href="#" id="show_modal_edit_dosen" data-nip="<?php echo $jabatan->NIP; ?>" data-nama="<?php echo $jabatan->nama_pegawai; ?>" data-jabatan="<?php echo $jabatan->nama_jabatan; ?>" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="#" id="show_modal_edit_pegawai" data-nip="<?php echo $jabatan->NIP; ?>" data-nama="<?php echo $jabatan->nama_pegawai; ?>" data-jabatan="<?php echo $jabatan->nama_jabatan; ?>" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></i></a>
                           </td>
 
                         </tr>
@@ -94,14 +96,14 @@
                       <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody id="show_data_pegawai">
-                    <?php foreach($jabtan_pegawai as $jabatan) { ?>
+                  <tbody id="show_data_dosen">
+                  <?php foreach($jabtan_dosen as $jabatan) { ?>
                         <tr>
                           <td><?php echo $jabatan->nama_pegawai; ?></td>
                           <td><?php echo $jabatan->nama_jabatan; ?></td>
                           <td><?php echo $jabatan->sejak_tanggal; ?></td>
                           <td>
-                            <a href="#" id="show_modal_edit_pegawai" data-nip="<?php echo $jabatan->NIP; ?>" data-nama="<?php echo $jabatan->nama_pegawai; ?>" data-jabatan="<?php echo $jabatan->nama_jabatan; ?>" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></i></a>
+                            <a href="#" id="show_modal_edit_dosen" data-nip="<?php echo $jabatan->NIP; ?>" data-nama="<?php echo $jabatan->nama_pegawai; ?>" data-jabatan="<?php echo $jabatan->nama_jabatan; ?>" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                           </td>
 
                         </tr>
@@ -147,6 +149,8 @@ $(document).ready(function() {
 
   $('.divDosenLalu').hide();
   $('.divPegawaiLalu').hide();
+  $('#pemilikKosong').hide();
+  
 });
 
 
@@ -176,7 +180,7 @@ $('#show_data_dosen').on('click', '#show_modal_edit_dosen', function(){
       
       var html = '';
       for (var i = 0; i < data.length; i++) {
-        html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan +'</option>';
+        html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan+   '</option>';
       }
       
       $('#select_jabatan_dosen').html(html);
@@ -200,14 +204,27 @@ $('#pilih_jabatan_baru').on('click', function(){
     data : {id_jab : id_jab},
     dataType : 'json',
     success : function(data){
-      $('#nama_dosen_digantikan').val(data.nama_pegawai);
-      $('#id_dosen_lama').val(data.NIP);
+      if(data.NIP){
+        $('#nama_dosen_digantikan').val(data.nama_pegawai);
+        $('#id_dosen_lama').val(data.NIP);
+        listJabatan();
+        $('.divDosenLalu').show();
+        $('#pemilikKosong').hide();
+      } else {
+        $('#pemilikKosong').show();
+        $('.divDosenLalu').hide();
+      }
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert(textStatus);
     }
   });
 
+  
+
+});
+
+function listJabatan(){
   // Ambil Jabatan Yang Tersedia
   $.ajax({
     type  : 'POST',
@@ -218,65 +235,18 @@ $('#pilih_jabatan_baru').on('click', function(){
 
       var html = '';
       for (var i = 0; i < data.length; i++) {
-        html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan +'</option>';
+        html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan + '</option>';
       }
       $('#select_jabatan_pergantian').html(html);
 
-      $('.divDosenLalu').show();
+      
 
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert(textStatus);
     }
   });
-
-});
-
-$('#btn_update_jabatan_dosen').on('click', function(){
-  // Ambil Data yang dibutuhkan
-  var id_dosen = $('#id_dosen_lama').val();
-  var id_jabatan = $('#select_jabatan_pergantian').val();
-
-  console.log('Updating Data : ' + id_dosen + ', ' + id_jabatan);
-  
-
-  // Update Data Dosen Lama Jabatan Baru
-  $.ajax({
-    type  : 'POST',
-    url   : '<?php echo base_url() . 'C_Jabatan_Struktural/updateJabatanBaru' ?>',
-    async : false,
-    dataType : 'json',
-    data : {id_dosen : id_dosen, id_jabatan : id_jabatan},
-    success : function(data){
-      console.log('Berhasil Update Data Dosen Lama');
-    },
-    error: function(jqXHR, textStatus, errorThrown){
-      alert(textStatus);
-    }
-  });
-
-  id_dosen = $('#id_dosen_baru').val();
-  id_jabatan = $('#select_jabatan_dosen').val();
-
-  console.log('Updating Data : ' + id_dosen + ', ' + id_jabatan);
-
-  // Update Data Dosen Baru Jabatan Baru
-  $.ajax({
-    type  : 'POST',
-    url   : '<?php echo base_url() . 'C_Jabatan_Struktural/updateJabatanBaru' ?>',
-    async : false,
-    dataType : 'json',
-    data : {id_dosen : id_dosen, id_jabatan : id_jabatan},
-    success : function(data){
-      console.log('Berhasil Update Data Dosen Baru');
-      $('#Modal_Edit_Jabatan_Dosen').modal('hide');
-    },
-    error: function(jqXHR, textStatus, errorThrown){
-      alert(textStatus);
-    }
-  });
-
-});
+}
 
 // ======================================= BAGIAN DATA PEGAWAI ===================================
 $('#show_data_pegawai').on('click', '#show_modal_edit_pegawai', function(){
@@ -330,87 +300,46 @@ $.ajax({
   data : {id_jab : id_jab},
   dataType : 'json',
   success : function(data){
-    $('#nama_pegawai_digantikan').val(data.nama_pegawai);
-    $('#id_pegawai_lama').val(data.NIP);
+    if(data.NIP){
+      $('#nama_pegawai_digantikan').val(data.nama_pegawai);
+      $('#id_pegawai_lama').val(data.NIP);
+      pemilikSebelumnya();
+      $('.divPegawaiLalu').show();
+    }else{
+      $('.divPegawaiLalu').hide();
+    }
   },
   error: function(jqXHR, textStatus, errorThrown){
     alert(textStatus);
   }
 });
 
-// Ambil Jabatan Kosong Tersedia
-$.ajax({
-  type  : 'POST',
-  url   : '<?php echo base_url() . 'C_Jabatan_Struktural/getJabatanKosongPegawai' ?>',
-  async : false,
-  dataType : 'json',
-  success : function(data){
 
-    var html = '';
-    for (var i = 0; i < data.length; i++) {
-      html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan +'</option>';
-    }
-    $('#select_jabatan_pergantian_pegawai').html(html);
-
-    $('.divPegawaiLalu').show();
-
-  },
-  error: function(jqXHR, textStatus, errorThrown){
-    alert(textStatus);
-  }
-});
 
 });
 
-$('#btn_update_jabatan_pegawai').on('click', function(){
-  // Ambil Data yang dibutuhkan
-  var id_dosen = $('#id_pegawai_lama').val();
-  var id_jabatan = $('#select_jabatan_pergantian_pegawai').val();
-
-  console.log('Updating Data : ' + id_dosen + ', ' + id_jabatan);
-
-
-  // Update Data pegawai Lama Jabatan Baru
+function pemilikSebelumnya(){
+  // Ambil Jabatan Kosong Tersedia
   $.ajax({
     type  : 'POST',
-    url   : '<?php echo base_url() . 'C_Jabatan_Struktural/updateJabatanBaru' ?>',
+    url   : '<?php echo base_url() . 'C_Jabatan_Struktural/getJabatanKosongPegawai' ?>',
     async : false,
     dataType : 'json',
-    data : {id_dosen : id_dosen, id_jabatan : id_jabatan},
     success : function(data){
-      console.log('Berhasil Update Data pegawai Lama');
+
+      var html = '';
+      for (var i = 0; i < data.length; i++) {
+        html += '<option value="' + data[i].id + '">' + data[i].nama_jabatan +'</option>';
+      }
+      $('#select_jabatan_pergantian_pegawai').html(html);
+
+
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert(textStatus);
     }
   });
-
-  id_dosen = $('#id_pegawai_baru').val();
-  id_jabatan = $('#select_jabatan_pegawai').val();
-
-  console.log('Updating Data : ' + id_dosen + ', ' + id_jabatan);
-
-  // Update Data pegawai Baru Jabatan Baru
-  $.ajax({
-    type  : 'POST',
-    url   : '<?php echo base_url() . 'C_Jabatan_Struktural/updateJabatanBaru' ?>',
-    async : false,
-    dataType : 'json',
-    data : {id_dosen : id_dosen, id_jabatan : id_jabatan},
-    success : function(data){
-      console.log('Berhasil Update Data pegawai Baru');
-      $('#Modal_Edit_Jabatan_pegawai').modal('hide');
-
-      
-    },
-    error: function(jqXHR, textStatus, errorThrown){
-      alert(textStatus);
-    }
-
-    
-  });
-
-});
+}
 
 </script>
 

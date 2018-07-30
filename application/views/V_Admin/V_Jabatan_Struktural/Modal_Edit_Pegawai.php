@@ -1,5 +1,5 @@
 <!-- ================================ MODAL EDIT JABATAN STRUKTURAL =========================================== -->
-<form id="myForm">
+<?php echo form_open_multipart('admin/jabatan-struktural/updatePegawai');?>
 	<div class="modal fade" id="Modal_Edit_Jabatan_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
@@ -12,7 +12,7 @@
 
 				</div>
 				<div class="modal-body">
-					<input type="hidden" id="id_pegawai_baru">
+					<input type="hidden" id="id_pegawai_baru" name="id_pegawai_baru">
 					<div class="form-group row">
                         <div class="col-md-6">
 							<label for="">Nama Pegawai</label>
@@ -27,7 +27,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="sel1">Pilih Jabatan</label>
                         <div class="col-md-7">
-                            <select class="form-control" id="select_jabatan_pegawai">
+                            <select class="form-control" id="select_jabatan_pegawai" name="select_jabatan_pegawai">
 
                             </select>
                         </div>
@@ -38,14 +38,14 @@
 
 					<div class="form-group row divPegawaiLalu">
 						<hr>
-						<input type="hidden" id="id_pegawai_lama">
+						<input type="hidden" id="id_pegawai_lama" name="id_pegawai_lama">
                         <div class="col-md-3">
 							<label for="">pemilik sebelumnya</label>
 							<input type="text" class="form-control" id="nama_pegawai_digantikan">
 						</div>
                         <div class="col-md-9">
 							<label for="">dengan tanggung jawab baru </label>
-							<select class="form-control" id="select_jabatan_pergantian_pegawai">
+							<select class="form-control" id="select_jabatan_pergantian_pegawai" name="select_jabatan_pergantian_pegawai">
 
 							</select>
                         </div>
@@ -54,7 +54,7 @@
 					<div class="form-group row divPegawaiLalu">
 						<label class="col-md-3 col-form-label" for="sel1">Upload surat keputusan</label>
                         <div class="col-md-9">
-							<input type="file" class="form-control" name="upload_sk" id="upload_sk">
+							<input type="file" class="form-control" name="userfile" id="userfile">
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" id="close_modal" data-dismiss="modal">Close</button>
-					<button type="button" id="btn_update_jabatan_pegawai" type="submit" class="btn btn-primary">Update</button>
+					<button id="btn_update_jabatan_pegawai" type="submit" class="btn btn-primary">Update</button>
 				</div>
 			</div>
 		</div>

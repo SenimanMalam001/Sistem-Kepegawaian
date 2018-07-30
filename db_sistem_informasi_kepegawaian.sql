@@ -26,8 +26,7 @@ CREATE TABLE `tbl_absensi` (
   `tanggal` date DEFAULT NULL,
   `waktu_keterlambatan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `nip_dosen` (`nip_dosen`),
-  CONSTRAINT `tbl_absensi_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tbl_pegawai` (`jab_fa`)
+  KEY `nip_dosen` (`nip_dosen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_absensi` */
@@ -174,10 +173,20 @@ CREATE TABLE `tbl_jabatan_fungsional_akademik_pegawai` (
   `jabFa` int(11) DEFAULT NULL,
   `sejak_tanggal` date DEFAULT NULL,
   `surat_keputusan` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `nip_pegawai` (`nip_pegawai`),
+  KEY `jabFa` (`jabFa`),
+  CONSTRAINT `tbl_jabatan_fungsional_akademik_pegawai_ibfk_1` FOREIGN KEY (`nip_pegawai`) REFERENCES `tbl_pegawai` (`NIP`),
+  CONSTRAINT `tbl_jabatan_fungsional_akademik_pegawai_ibfk_2` FOREIGN KEY (`jabFa`) REFERENCES `tbl_jabatan_fungsional_akademik` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_jabatan_fungsional_akademik_pegawai` */
+
+insert  into `tbl_jabatan_fungsional_akademik_pegawai`(`id`,`nip_pegawai`,`jabFa`,`sejak_tanggal`,`surat_keputusan`) values 
+(1,'15312360',1,NULL,NULL),
+(2,'15312371',2,NULL,NULL),
+(3,'15312644',3,NULL,NULL),
+(4,'15312644',1,NULL,NULL);
 
 /*Table structure for table `tbl_jabatan_struktural` */
 
@@ -312,25 +321,20 @@ CREATE TABLE `tbl_pegawai` (
   `tempat_lahir` varchar(255) DEFAULT NULL,
   `agama` varchar(25) DEFAULT NULL,
   `status_aktif` varchar(255) DEFAULT NULL,
-  `kd_golongan` varchar(10) DEFAULT NULL,
-  `jab_fa` int(11) DEFAULT NULL,
   `status_kepegawaian` varchar(15) DEFAULT NULL,
   `foto_profil` varchar(50) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`NIP`),
-  KEY `jab_fa` (`jab_fa`),
-  KEY `kd_golongan` (`kd_golongan`),
-  CONSTRAINT `tbl_pegawai_ibfk_1` FOREIGN KEY (`jab_fa`) REFERENCES `tbl_jabatan_fungsional_akademik` (`id`)
+  PRIMARY KEY (`NIP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_pegawai` */
 
-insert  into `tbl_pegawai`(`NIP`,`nomor_kartu_pegawai`,`nama_pegawai`,`no_ktp`,`no_telepon`,`no_telepon_rumah`,`alamat_tinggal`,`alamat_tetap`,`jenis_kelamin`,`tanggal_lahir`,`tempat_lahir`,`agama`,`status_aktif`,`kd_golongan`,`jab_fa`,`status_kepegawaian`,`foto_profil`,`email`) values 
-('15312360','15351523','Ariana',1532415,'15351184','156851352','fdasfdsafsdf',NULL,'Wanita','2018-07-19','Tj.karang','Islam','Rajin Badai','golC',3,'0',NULL,NULL),
-('15312371','12312312','Tio Saputra',123512,'135185312','08451235871',NULL,NULL,'Pria','2018-07-17','lampung','Islam','Aktif','golA',3,'1','ragil_super3.png','karya.tiosaputra@gmail.com'),
-('15312377','12538513','Jefri Samuel',2147483647,'1115413','12311684138','Jl. Warnet Click',NULL,'Pria','2018-07-19','Rumah Sakit','Kristen','Sedang PKL','golE',1,'0',NULL,NULL),
-('15312644','123123','Ragil Satrio Wicaksono',123512,'135185312','08451235871','',NULL,'Pria','2018-07-17','lampung','Islam','Aktif','golB',3,'1','ragil_super4.png','ragilsatrio20@gmail.com'),
-('1535154','22323','Rizki Yulidar',15318125,'1355815','082307299224','Jl. Melati',NULL,'Pria','2018-07-09','Way Halim','Islam','Sedang Berlibur','golA',4,'1',NULL,'');
+insert  into `tbl_pegawai`(`NIP`,`nomor_kartu_pegawai`,`nama_pegawai`,`no_ktp`,`no_telepon`,`no_telepon_rumah`,`alamat_tinggal`,`alamat_tetap`,`jenis_kelamin`,`tanggal_lahir`,`tempat_lahir`,`agama`,`status_aktif`,`status_kepegawaian`,`foto_profil`,`email`) values 
+('15312360','15351523','Ariana',1532415,'15351184','156851352','fdasfdsafsdf',NULL,'Wanita','2018-07-19','Tj.karang','Islam','Rajin Badai','0',NULL,NULL),
+('15312371','12312312','Tio Saputra',123512,'135185312','08451235871',NULL,NULL,'Pria','2018-07-17','lampung','Islam','Aktif','1','ragil_super3.png','karya.tiosaputra@gmail.com'),
+('15312377','12538513','Jefri Samuel',2147483647,'1115413','12311684138','Jl. Warnet Click',NULL,'Pria','2018-07-19','Rumah Sakit','Kristen','Sedang PKL','0',NULL,NULL),
+('15312644','123123','Ragil Satrio Wicaksono',123512,'135185312','08451235871','',NULL,'Pria','2018-07-17','lampung','Islam','Aktif','1','ragil_super4.png','ragilsatrio20@gmail.com'),
+('1535154','22323','Rizki Yulidar',15318125,'1355815','082307299224','Jl. Melati',NULL,'Pria','2018-07-09','Way Halim','Islam','Sedang Berlibur','1',NULL,'');
 
 /*Table structure for table `tbl_pendidikan` */
 
@@ -884,7 +888,7 @@ DROP TABLE IF EXISTS `vw_surat_tugas_pegawai`;
 /*!50001 DROP TABLE IF EXISTS `v_cetaksuratizin` */;
 /*!50001 DROP VIEW IF EXISTS `v_cetaksuratizin` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_cetaksuratizin` AS (select `c`.`id` AS `id`,`p`.`nama_pegawai` AS `Nama`,`c`.`nip_dosen` AS `NIP`,`g`.`nama_golongan` AS `Golongan`,`j`.`nama_jabatan` AS `Jabatan`,(to_days(`c`.`tgl_akhir`) - to_days(`c`.`tgl_mulai`)) AS `Lama`,`c`.`tgl_mulai` AS `Mulai_Cuti`,`c`.`tgl_mulai` AS `BulanMulai`,`c`.`tgl_akhir` AS `Akhir_Cuti`,`c`.`alasan` AS `alasan`,`jc`.`nama_cuti` AS `jenis_cuti`,`c`.`link_qrcode` AS `qrcode`,dayofmonth(`c`.`tgl_pengajuan`) AS `tgl`,dayofmonth(`c`.`tgl_mulai`) AS `tgl_mulai`,dayofmonth(`c`.`tgl_akhir`) AS `tgl_akhir`,monthname(str_to_date(month(`c`.`tgl_pengajuan`),'%m')) AS `bulan_pengajuan`,monthname(str_to_date(month(`c`.`tgl_mulai`),'%m')) AS `bulan_mulai`,monthname(str_to_date(month(`c`.`tgl_akhir`),'%m')) AS `bulan_akhir`,year(`c`.`tgl_pengajuan`) AS `tahun_pengajuan`,year(`c`.`tgl_mulai`) AS `tahun_mulai`,year(`c`.`tgl_akhir`) AS `tahun_akhir` from ((((`tbl_permohonan_cuti` `c` join `tbl_pegawai` `p` on((`p`.`NIP` = `c`.`nip_dosen`))) join `tbl_jabatan_fungsional_akademik` `j` on((`j`.`id` = `p`.`jab_fa`))) join `tbl_golongan` `g` on((`g`.`kd_golongan` = `p`.`kd_golongan`))) join `tbl_jenis_cuti` `jc` on((`c`.`kd_jenis` = `jc`.`kd_cuti`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_cetaksuratizin` AS (select `c`.`id` AS `id`,`p`.`nama_pegawai` AS `Nama`,`c`.`nip_dosen` AS `NIP`,`g`.`nama_golongan` AS `Golongan`,`j`.`nama_jabatan` AS `Jabatan`,(to_days(`c`.`tgl_akhir`) - to_days(`c`.`tgl_mulai`)) AS `Lama`,`c`.`tgl_mulai` AS `Mulai_Cuti`,`c`.`tgl_mulai` AS `BulanMulai`,`c`.`tgl_akhir` AS `Akhir_Cuti`,`c`.`alasan` AS `alasan`,`jc`.`nama_cuti` AS `jenis_cuti`,`c`.`link_qrcode` AS `qrcode`,dayofmonth(`c`.`tgl_pengajuan`) AS `tgl`,dayofmonth(`c`.`tgl_mulai`) AS `tgl_mulai`,dayofmonth(`c`.`tgl_akhir`) AS `tgl_akhir`,monthname(str_to_date(month(`c`.`tgl_pengajuan`),'%m')) AS `bulan_pengajuan`,monthname(str_to_date(month(`c`.`tgl_mulai`),'%m')) AS `bulan_mulai`,monthname(str_to_date(month(`c`.`tgl_akhir`),'%m')) AS `bulan_akhir`,year(`c`.`tgl_pengajuan`) AS `tahun_pengajuan`,year(`c`.`tgl_mulai`) AS `tahun_mulai`,year(`c`.`tgl_akhir`) AS `tahun_akhir` from ((((((`tbl_permohonan_cuti` `c` join `tbl_pegawai` `p` on((`p`.`NIP` = `c`.`nip_dosen`))) join `tbl_jabatan_fungsional_akademik_pegawai` `jabp` on((`jabp`.`nip_pegawai` = `p`.`NIP`))) join `tbl_jabatan_fungsional_akademik` `j` on((`j`.`id` = `jabp`.`jabFa`))) join `tbl_golongan_pegawai` `gp` on((`gp`.`nip` = `p`.`NIP`))) join `tbl_golongan` `g` on((`g`.`kd_golongan` = `gp`.`kd_golongan`))) join `tbl_jenis_cuti` `jc` on((`c`.`kd_jenis` = `jc`.`kd_cuti`)))) */;
 
 /*View structure for view vw_anggota_sk */
 
@@ -926,7 +930,7 @@ DROP TABLE IF EXISTS `vw_surat_tugas_pegawai`;
 /*!50001 DROP TABLE IF EXISTS `vw_jabatan_pegawai` */;
 /*!50001 DROP VIEW IF EXISTS `vw_jabatan_pegawai` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`::1` SQL SECURITY DEFINER VIEW `vw_jabatan_pegawai` AS (select `p`.`NIP` AS `NIP`,`p`.`nama_pegawai` AS `nama_pegawai`,`jabfa`.`id` AS `id`,`jabfa`.`nama_jabatan` AS `nama_jabatan` from (`tbl_pegawai` `p` join `tbl_jabatan_fungsional_akademik` `jabfa` on((`jabfa`.`id` = `p`.`jab_fa`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`::1` SQL SECURITY DEFINER VIEW `vw_jabatan_pegawai` AS (select `p`.`NIP` AS `NIP`,`p`.`nama_pegawai` AS `nama_pegawai`,`jabfa`.`id` AS `id`,`jabfa`.`nama_jabatan` AS `nama_jabatan` from ((`tbl_pegawai` `p` join `tbl_jabatan_fungsional_akademik_pegawai` `jabfp` on((`jabfp`.`nip_pegawai` = `p`.`NIP`))) join `tbl_jabatan_fungsional_akademik` `jabfa` on((`jabfa`.`id` = `jabfp`.`jabFa`)))) */;
 
 /*View structure for view vw_jabatan_struktural_dosen */
 
@@ -954,7 +958,7 @@ DROP TABLE IF EXISTS `vw_surat_tugas_pegawai`;
 /*!50001 DROP TABLE IF EXISTS `vw_profil_biodata` */;
 /*!50001 DROP VIEW IF EXISTS `vw_profil_biodata` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`::1` SQL SECURITY DEFINER VIEW `vw_profil_biodata` AS (select `p`.`NIP` AS `NIP`,`p`.`foto_profil` AS `foto_profil`,`p`.`nama_pegawai` AS `nama_pegawai`,`p`.`no_ktp` AS `no_ktp`,`p`.`tanggal_lahir` AS `tanggal_lahir`,`p`.`tempat_lahir` AS `tempat_lahir`,`p`.`jenis_kelamin` AS `jenis_kelamin`,`p`.`agama` AS `agama`,`p`.`alamat_tetap` AS `alamat_tetap`,`p`.`alamat_tinggal` AS `alamat_tinggal`,`p`.`no_telepon` AS `no_telepon`,`p`.`no_telepon_rumah` AS `no_telepon_rumah`,`g`.`kd_golongan` AS `kd_golongan`,`g`.`nama_golongan` AS `nama_golongan`,`p`.`status_aktif` AS `status_aktif`,`p`.`nomor_kartu_pegawai` AS `nomor_kartu_pegawai`,`p`.`status_kepegawaian` AS `status_kepegawaian`,`f`.`kd_fakultas` AS `kd_fakultas`,`p`.`email` AS `email` from (((`tbl_pegawai` `p` join `tbl_golongan` `g` on((`g`.`kd_golongan` = `p`.`kd_golongan`))) join `tbl_fakultas_pegawai` `fp` on((`fp`.`nip_pegawai` = `p`.`NIP`))) join `tbl_fakultas` `f` on((`f`.`kd_fakultas` = `fp`.`kd_fakultas`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`::1` SQL SECURITY DEFINER VIEW `vw_profil_biodata` AS (select `p`.`NIP` AS `NIP`,`p`.`foto_profil` AS `foto_profil`,`p`.`nama_pegawai` AS `nama_pegawai`,`p`.`no_ktp` AS `no_ktp`,`p`.`tanggal_lahir` AS `tanggal_lahir`,`p`.`tempat_lahir` AS `tempat_lahir`,`p`.`jenis_kelamin` AS `jenis_kelamin`,`p`.`agama` AS `agama`,`p`.`alamat_tetap` AS `alamat_tetap`,`p`.`alamat_tinggal` AS `alamat_tinggal`,`p`.`no_telepon` AS `no_telepon`,`p`.`no_telepon_rumah` AS `no_telepon_rumah`,`g`.`kd_golongan` AS `kd_golongan`,`g`.`nama_golongan` AS `nama_golongan`,`p`.`status_aktif` AS `status_aktif`,`p`.`nomor_kartu_pegawai` AS `nomor_kartu_pegawai`,`p`.`status_kepegawaian` AS `status_kepegawaian`,`f`.`kd_fakultas` AS `kd_fakultas`,`p`.`email` AS `email` from ((((`tbl_pegawai` `p` join `tbl_golongan_pegawai` `golp` on((`golp`.`nip` = `p`.`NIP`))) join `tbl_golongan` `g` on((`g`.`kd_golongan` = `golp`.`kd_golongan`))) join `tbl_fakultas_pegawai` `fp` on((`fp`.`nip_pegawai` = `p`.`NIP`))) join `tbl_fakultas` `f` on((`f`.`kd_fakultas` = `fp`.`kd_fakultas`)))) */;
 
 /*View structure for view vw_surat_tugas */
 

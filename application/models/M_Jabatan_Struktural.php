@@ -8,15 +8,45 @@ class M_Jabatan_Struktural extends CI_Model {
         return $data->result();
     }
 
-    function update_jabatan_baru(){
+    function update(){
         $db = $this->load->database('default', TRUE);
 
-		$id_dosen =$this->input->post('id_dosen');
-		$id_jabatan =$this->input->post('id_jabatan');
+        $id_dosen_baru = $this->input->post('id_dosen_baru');
+        $jabatan_dosen_baru = $this->input->post('select_jabatan_dosen');
 
-		$db->set('jab_str', $id_jabatan);
-		$db->where('nip_pegawai', $id_dosen);
-		$result=$db->update('tbl_jabatan_struktural_pegawai');
+		$id_dosen_lama =$this->input->post('id_dosen_lama');
+        $jabatan_baru_dosen_lama =$this->input->post('select_jabatan_pergantian');
+
+		$db->set('jab_str', $jabatan_dosen_baru);
+		$db->where('nip_pegawai', $id_dosen_baru);
+        $result=$db->update('tbl_jabatan_struktural_pegawai');
+        
+        if($id_dosen_lama){
+            $db->set('jab_str', $jabatan_baru_dosen_lama);
+            $db->where('nip_pegawai', $id_dosen_lama);
+            $result=$db->update('tbl_jabatan_struktural_pegawai');
+        }
+		return $result;
+    }
+
+    function updatePegawai(){
+        $db = $this->load->database('default', TRUE);
+
+        $id_pegawai_baru = $this->input->post('id_pegawai_baru');
+        $jabatan_pegawai_baru = $this->input->post('select_jabatan_pegawai');
+
+		$id_pegawai_lama =$this->input->post('id_pegawai_lama');
+        $select_jabatan_pergantian_pegawai =$this->input->post('select_jabatan_pergantian_pegawai');
+
+		$db->set('jab_str', $jabatan_pegawai_baru);
+		$db->where('nip_pegawai', $id_pegawai_baru);
+        $result=$db->update('tbl_jabatan_struktural_pegawai');
+        
+        if($id_pegawai_lama){
+            $db->set('jab_str', $select_jabatan_pergantian_pegawai);
+            $db->where('nip_pegawai', $id_pegawai_lama);
+            $result=$db->update('tbl_jabatan_struktural_pegawai');
+        }
 		return $result;
     }
 
