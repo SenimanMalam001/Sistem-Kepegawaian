@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Cuti</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/bootstrap/bootstrap.min.css') ?>" rel="stylesheet">
@@ -63,7 +63,7 @@
                                     <th>Tanggal Akhir</th>
                                     <th>Alasan</th>
                                     <th>Status </th>
-                                    <th style="text-align: right;">Actions</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody id="show_data">
@@ -73,239 +73,6 @@
                     
 
             </div>
-
-                <!-- MODAL ADD -->
-                    <form id="myForm">
-                    <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Masukan Data cuti</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                           <div class="modal-body">
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">pengajuan cuti</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                             <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          <input type="text" name="pengajuan_cuti_input" id="pengajuan_cuti_input" class="form-control" >
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Mulai Cuti</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                             <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          <input type="text" name="mulai_cuti_input" id="mulai_cuti_input" class="form-control" >
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Akhir Cuti</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                             <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          <input type="text" name="akhir_cuti_input" id="akhir_cuti_input" class="form-control" >
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Alasan Cuti</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="alasan_cuti_input" id="alasan_cuti_input" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Nip Dosen</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="nip_dosen_cuti_input" id="nip_dosen_cuti_input" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Kode Jenis Cuti</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="kd_jenis_cuti_input" id="kd_jenis_cuti_input" class="form-control" >
-                                    </div>
-                                </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" type="submit" id="btn_save" class="btn btn-primary">Save</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </form>
-                <!--END MODAL ADD-->
-
-                <!-- MODAL EDIT -->
-                <form>
-                    <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Data Cuti</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Id Cuti</label>
-                                    <div class="col-md-10">
-                                      <input type="text" name="id_cuti_edit" id="id_cuti_edit" class="form-control" placeholder="Product Code" disabled>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Mulai Cuti</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                             <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          <input type="text" name="mulai_cuti_edit" id="mulai_cuti_edit" class="form-control" >
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Akhir Cuti</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group date" data-provide="datepicker">
-                                             <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          <input type="text" name="akhir_cuti_edit" id="akhir_cuti_edit" class="form-control" >
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Alasan Cuti</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="alasan_cuti_edit" id="alasan_cuti_edit" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Nip Dosen</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="nip_dosen_cuti_edit" id="nip_dosen_cuti_edit" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Kode Jenis Cuti</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="kd_jenis_cuti_edit" id="kd_jenis_cuti_edit" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Status Pengajuan</label>
-                                    <div class="col-md-10">
-                                        <input type="text" name="kd_status_edit" id="kd_status_edit" class="form-control" >
-                                    </div>
-                                </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </form>
-                <!--END MODAL EDIT-->
-
-                <!--MODAL DELETE-->
-                 <form>
-                    <div class="modal fade" id="Modal_Delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Data Cuti</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                               <strong>Are you sure to delete this record?</strong>
-                          </div>
-                          <div class="modal-footer">
-                            <input type="hidden" name="id_cuti_delete" id="id_cuti_delete" class="form-control">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" type="submit" id="btn_delete" class="btn btn-primary">Yes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </form>
-
-                <!-- Modal Agree -->
-                 <form>
-                    <div class="modal fade" id="Modal_agree" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Data Agree</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label class="col-md-2 col-form-label">Keterenagan</label>
-                                        <div class="col-md-10">
-                                           <textarea class="form-control" id="input_deskirpsi_agree" name="input_deskirpsi_agree"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="id_cuti" id="id_cuti" class="form">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                    <button type="button" type="submit" id="btn_agree" class="btn btn-primary">Yes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 </form>
-
-
-                 <!-- Modal Disagree -->
-                  <form>
-                    <div class="modal fade" id="Modal_disagree" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Data Agree</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label class="col-md-2 col-form-label">Keterenagan</label>
-                                        <div class="col-md-10">
-                                           <textarea class="form-control" id="input_deskirpsi_disagree" name="input_deskirpsi_disagree"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="id_cuti" id="id_cuti" class="form">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                    <button type="button" type="submit" id="btn_disagree" class="btn btn-primary">Yes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 </form>
-
            
         </div>
         <!-- /#page-wrapper -->
@@ -343,25 +110,37 @@
                 function show_product(){
                     $.ajax({
                         type  : 'ajax',
-                        url   : '<?php echo base_url('C_CutiPegawai/cuti_data')?>',
+                        url   : '<?php echo base_url('C_CutiAdmin/cuti_data')?>',
                         async : false,
                         dataType : 'json',
                         success : function(data){
                             var html = '';
                             var i;
+
+
+
                             for(i=0; i<data.length; i++){
+
+                                if(data[i].id_status == 1){
+                                    $status = "Pending";
+                                    $sdown ="";
+                                }
+                                else if (data[i].id_status == 2){
+                                    $status = "Di Setuji";
+                                    $sdown ="";
+                                }
+                                else{
+                                    $status = "Di Tolak";
+                                    $sdown ="";
+                                }
                                 html += '<tr>'+
                                         '<td>'+data[i].nip_dosen+'</td>'+
                                         '<td>'+data[i].tgl_pengajuan+'</td>'+
                                         '<td>'+data[i].tgl_mulai +'</td>'+
                                         '<td>'+data[i].tgl_akhir +'</td>'+
                                         '<td>'+data[i].alasan +'</td>'+
-                                        '<td>'+data[i].id_status+'</td>'+
-                                        '<td style="text-align:right;">'+
-                                            '<a href="javascript:void(0);" class="btn btn-primary btn-sm item_agree " data-id_cuti="'+data[i].id+'" data-kd_status="'+data[i].id_status+'">Setujui</a>'+' '+
-                                            '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_disagree " data-id_cuti="'+data[i].id+'" data-kd_status="'+data[i].id_status+'">Tolak</a>'+
-
-                                        '</td>'+
+                                        '<td>'+$status+'</td>'+
+                                        
                                         '</tr>';
                             }
                             $('#show_data').html(html);
