@@ -28,7 +28,7 @@ CREATE TABLE `tbl_anak_rubrik` (
   PRIMARY KEY (`id_anak_rubrik`),
   KEY `id_rubrik` (`id_rubrik`),
   CONSTRAINT `tbl_anak_rubrik_ibfk_1` FOREIGN KEY (`id_rubrik`) REFERENCES `tbl_rubrik` (`id_rubrik`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_anak_rubrik` */
 
@@ -37,7 +37,9 @@ insert  into `tbl_anak_rubrik`(`id_anak_rubrik`,`id_rubrik`,`jabatan`,`point`) v
 (27,'RB-0001','Sekertaris',5),
 (28,'RB-0001','Anggota',3),
 (29,'RB-002','Ketua',10),
-(30,'RB-002','Anggota',5);
+(30,'RB-002','Anggota',5),
+(31,'RB-003','Ketua',15),
+(32,'RB-003','Wakil Ketua',10);
 
 /*Table structure for table `tbl_rubrik` */
 
@@ -58,7 +60,8 @@ CREATE TABLE `tbl_rubrik` (
 
 insert  into `tbl_rubrik`(`id_rubrik`,`deskripsi`,`jenis_pegawai`,`katagori`,`tahun`,`status`,`satuan`) values 
 ('RB-0001','Pembina UKM','Dosen',NULL,NULL,NULL,NULL),
-('RB-002','Pengurus PKL','Dosen',NULL,NULL,NULL,NULL);
+('RB-002','Pengurus PKL','Dosen',NULL,NULL,NULL,NULL),
+('RB-003','Kunjungan Tahunan','Dosen',NULL,NULL,NULL,NULL);
 
 /* Trigger structure for table `tbl_rubrik` */
 
